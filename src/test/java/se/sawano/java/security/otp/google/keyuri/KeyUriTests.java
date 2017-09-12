@@ -24,8 +24,7 @@ import java.time.Duration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static se.sawano.java.security.otp.google.keyuri.Label.AccountName.accountName;
 import static se.sawano.java.security.otp.google.keyuri.Label.Issuer.issuer;
 import static se.sawano.java.security.otp.google.keyuri.parameters.Counter.counter;
@@ -76,6 +75,22 @@ public class KeyUriTests {
 
         assertEquals("otpauth://hotp/john.doe%40example.com%3AMy%20Co?algorithm=SHA1&counter=42&digits=6&issuer=My%20Co&secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ", uri
                 .toString());
+    }
+
+    @Test
+    void totp_uri_should_not_contain_hotp_parameters() {
+        final TOTPParameters parameters = totpParametersWithIssuer("Acme");
+        final KeyUri keyUri = new KeyUri(new Label(accountName("john.doe@example.com"), issuer("Acme")), parameters);
+
+        assertFalse(keyUri.hotpParameters().isPresent());
+    }
+
+    @Test
+    void hotp_uri_should_not_contain_totp_parameters() {
+        final HOTPParameters parameters = hotpParametersWithIssuer("Acme");
+        final KeyUri keyUri = new KeyUri(new Label(accountName("john.doe@example.com"), issuer("Acme")), parameters);
+
+        assertFalse(keyUri.totpParameters().isPresent());
     }
 
     private TOTPParameters totpParametersWithIssuer(final String issuer) {
