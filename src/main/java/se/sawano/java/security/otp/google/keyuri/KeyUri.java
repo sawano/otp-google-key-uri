@@ -41,6 +41,8 @@ import static org.apache.commons.lang3.Validate.notNull;
 @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public final class KeyUri {
 
+    private static final String OTPAUTH_SCHEME = "otpauth://";
+
     private final Type type;
     private final Label label;
     private final Optional<TOTPParameters> totpParameters;
@@ -71,7 +73,7 @@ public final class KeyUri {
     }
 
     public URI toURI() {
-        return URI.create("otpauth://" + type.value() + "/" + label.asUriString() + parametersUriSring());
+        return URI.create(OTPAUTH_SCHEME + type.value() + "/" + label.asUriString() + parametersUriSring());
     }
 
     private String parametersUriSring() {
