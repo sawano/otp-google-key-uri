@@ -80,21 +80,25 @@ public class ParametersBuilder<T extends ParametersBuilder> {
 
     private ParametersBuilder() {}
 
+    @SuppressWarnings("unchecked")
     public T withSecret(final Secret secret) {
         this.secret = secret;
         return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T withAlgorithm(final Algorithm algorithm) {
         this.algorithm = algorithm;
         return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T withDigits(final Digits digits) {
         this.digits = digits;
         return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
     public T withIssuer(final Issuer issuer) {
         this.issuer = issuer;
         return (T) this;

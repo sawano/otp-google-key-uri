@@ -38,6 +38,7 @@ import static org.apache.commons.lang3.Validate.notNull;
  * prefix of the label. If both issuer parameter and issuer label prefix are present, they should be equal.
  * </p>
  */
+@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public final class KeyUri {
 
     private final Type type;
