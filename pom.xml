@@ -4,7 +4,7 @@
 
     <groupId>se.sawano.java.security</groupId>
     <artifactId>otp-google-key-uri</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>otp-google-key-uri</name>
@@ -21,7 +21,7 @@
         <url>git@github.com:sawano/otp-google-key-uri.git</url>
         <connection>scm:git:git@github.com:sawano/otp-google-key-uri.git</connection>
         <developerConnection>scm:git:git@github.com:sawano/otp-google-key-uri.git</developerConnection>
-        <tag>v0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
